@@ -2,11 +2,13 @@ var numberOfrumButton=document.querySelectorAll('.drum').length;
 for (let index = 0; index < numberOfrumButton; index++) {
     document.querySelectorAll(".drum")[index].addEventListener("click",function() {
     makeSound(this.innerHTML);
+    animationButton(this.innerHTML);
         
     })
 }
 document.addEventListener("keypress",function(event){
     makeSound(event.key);
+    animationButton(event.key)
 })
 function makeSound(a){
     switch (a) {
@@ -41,4 +43,12 @@ function makeSound(a){
     
         default:
     }
+}
+function animationButton(currentKey){
+    var activeButton=document.querySelector('.'+currentKey);
+    activeButton.classList.add('pressed');
+    setTimeout(function (){
+        activeButton.classList.remove("pressed");
+    },100);
+
 }
